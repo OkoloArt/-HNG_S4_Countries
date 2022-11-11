@@ -4,10 +4,18 @@ class DataSource {
 
     fun loadLanguages(): List<LanguageModel> {
         return listOf(
-                LanguageModel("Kotlin" , "") ,
-                LanguageModel("Android" , "") ,
-                LanguageModel("Git" , "") ,
-                LanguageModel("Java" , "")
+                LanguageModel("Bahasa" , "") ,
+                LanguageModel("Deutsch" , "") ,
+                LanguageModel("English" , "") ,
+                LanguageModel("Espanol" , ""),
+                LanguageModel("French" , "") ,
+                LanguageModel("Italian" , "") ,
+                LanguageModel("Portuguese" , "") ,
+                LanguageModel("Bengali" , ""),
+                LanguageModel("Turkish" , "") ,
+                LanguageModel("Ukrainian" , "") ,
+                LanguageModel("Czech" , "") ,
+
         )
     }
 }
