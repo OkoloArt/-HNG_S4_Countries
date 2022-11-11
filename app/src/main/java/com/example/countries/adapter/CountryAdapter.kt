@@ -10,22 +10,28 @@ import com.squareup.picasso.Picasso
 import java.util.*
 
 class CountryAdapter(
-    private val dataSet: ArrayList<CountriesDto> ,
+    private val dataSet: ArrayList<CountriesDto>? ,
     private val onItemClicked: (CountriesDto) -> Unit ,
 ) :
     RecyclerView.Adapter<CountryAdapter.CountryViewHolder>()
 {
 
     val initialCountryList = ArrayList<CountriesDto>().apply {
-        dataSet.let { addAll(it) }
+        dataSet.let {
+            if (it != null)
+            {
+                addAll(it)
+            }
+        }
     }
 
     class CountryViewHolder(private val binding: CountryListDetailsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(countriesDto: CountriesDto) {
-            Picasso.get().load(countriesDto.flags.png).into(binding.countryImage)
-            binding.countryName.text = countriesDto.name.official
-            binding.countryCapital.text = countriesDto.capital[0]
+
+            Picasso.get().load(countriesDto.flags?.png).into(binding.countryImage)
+            binding.countryName.text = countriesDto.name?.official ?: ""
+            binding.countryCapital.text = countriesDto.capital?.first() ?: ""
         }
     }
 
@@ -36,14 +42,20 @@ class CountryAdapter(
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder , position: Int) {
-        val current = dataSet[position]
+        val current = dataSet?.get(position)
         holder.itemView.setOnClickListener {
-            onItemClicked(current)
+            if (current != null)
+            {
+                onItemClicked(current)
+            }
         }
-        holder.bind(current)
+        if (current != null)
+        {
+            holder.bind(current)
+        }
     }
 
-    override fun getItemCount(): Int = dataSet.size
+    override fun getItemCount(): Int = dataSet?.size!!
 
     fun getFilter(): Filter {
         return cityFilter
@@ -58,7 +70,7 @@ class CountryAdapter(
             } else {
                 val query = constraint.toString().trim().lowercase()
                 initialCountryList.forEach {
-                    if (it.name.official.lowercase(Locale.ROOT).contains(query)) {
+                    if (it.name?.official?.lowercase(Locale.ROOT)?.contains(query) == true) {
                         filteredList.add(it)
                     }
                 }
@@ -72,8 +84,8 @@ class CountryAdapter(
         override fun publishResults(constraint: CharSequence? , results: FilterResults?) {
             if (results?.values is ArrayList<*>)
             {
-                dataSet.clear()
-                dataSet.addAll(results.values as ArrayList<CountriesDto>)
+                dataSet?.clear()
+                dataSet?.addAll(results.values as ArrayList<CountriesDto>)
                 notifyDataSetChanged()
             }
         }

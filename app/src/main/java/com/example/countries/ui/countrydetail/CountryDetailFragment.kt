@@ -45,23 +45,23 @@ class CountryDetailFragment : Fragment()
         binding.apply {
             if (countriesDto != null)
             {
-                Picasso.get().load(countriesDto.flags.png).into(countryFlagImage)
+                Picasso.get().load(countriesDto.flags?.png).into(countryFlagImage)
                 population.text = countriesDto.population.toString()
                 region.text = countriesDto.region
-                capital.text = countriesDto.capital[0]
+                capital.text = countriesDto.capital?.first() ?: ""
                 motto.text = null
-                officialLang.text = null
+                officialLang.text = countriesDto.languages?.values?.first() ?: "Not available"
                 ethnic.text = null
                 religion.text = null
                 government.text = null
-                independence.text = null
+                independence.text = countriesDto.independent.toString()
                 area.text = "${countriesDto.area}Km2"
-                currency.text = null
+                currency.text = countriesDto.currencies?.values?.first()?.name ?: ""
                 gdp.text = null
-                timezone.text = countriesDto.timezones[0]
+                timezone.text = countriesDto.timezones?.first() ?: ""
                 dateFormat.text = null
-                dialingCode.text = countriesDto.idd.suffixes[0]
-                drivingSide.text = countriesDto.car.side
+                dialingCode.text = "${countriesDto.idd?.root ?: ""}${countriesDto.idd?.suffixes?.first() ?: ""}"
+                drivingSide.text = countriesDto.car?.side ?: ""
             }
         }
     }

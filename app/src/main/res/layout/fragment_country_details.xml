@@ -1,273 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.countrydetail.CountryDetailFragment">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/country_flag_image"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/population_text"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Population:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_flag_image" />
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/population"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/population_text"
-        app:layout_constraintStart_toEndOf="@+id/population_text"
-        app:layout_constraintTop_toTopOf="@+id/population_text" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/country_flag_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/image_background"
+            android:scaleType="fitXY"
+            android:clipToOutline="true"
+            android:src="@drawable/ic_light_mode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/region_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Region"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/population_text" />
+        <TextView
+            android:id="@+id/population_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Population:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/country_flag_image" />
 
-    <TextView
-        android:id="@+id/region"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/region_text"
-        app:layout_constraintStart_toEndOf="@+id/region_text"
-        app:layout_constraintTop_toBottomOf="@+id/population_text" />
+        <TextView
+            android:id="@+id/population"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/population_text"
+            app:layout_constraintStart_toEndOf="@+id/population_text"
+            app:layout_constraintTop_toTopOf="@+id/population_text" />
 
-    <TextView
-        android:id="@+id/capital_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Capital:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/region_text" />
+        <TextView
+            android:id="@+id/region_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Region:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/population_text" />
 
-    <TextView
-        android:id="@+id/capital"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/capital_text"
-        app:layout_constraintStart_toEndOf="@+id/capital_text"
-        app:layout_constraintTop_toBottomOf="@+id/region_text" />
+        <TextView
+            android:id="@+id/region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/region_text"
+            app:layout_constraintStart_toEndOf="@+id/region_text"
+            app:layout_constraintTop_toTopOf="@+id/region_text" />
 
-    <TextView
-        android:id="@+id/motto_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Motto:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capital_text" />
+        <TextView
+            android:id="@+id/capital_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Capital:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/region_text" />
 
-    <TextView
-        android:id="@+id/motto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/motto_text"
-        app:layout_constraintStart_toEndOf="@+id/motto_text"
-        app:layout_constraintTop_toBottomOf="@+id/capital_text" />
+        <TextView
+            android:id="@+id/capital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/capital_text"
+            app:layout_constraintStart_toEndOf="@+id/capital_text"
+            app:layout_constraintTop_toTopOf="@+id/capital_text" />
 
-    <TextView
-        android:id="@+id/official_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Official Language:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/motto_text" />
+        <TextView
+            android:id="@+id/motto_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Motto:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capital_text" />
 
-    <TextView
-        android:id="@+id/official_lang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/official_text"
-        app:layout_constraintStart_toEndOf="@+id/official_text"
-        app:layout_constraintTop_toBottomOf="@+id/motto_text" />
+        <TextView
+            android:id="@+id/motto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/motto_text"
+            app:layout_constraintStart_toEndOf="@+id/motto_text"
+            app:layout_constraintTop_toTopOf="@+id/motto_text" />
 
-    <TextView
-        android:id="@+id/ethnic_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ethnic Group:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/official_text" />
+        <TextView
+            android:id="@+id/official_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Official Language:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/motto_text" />
 
-    <TextView
-        android:id="@+id/ethnic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/ethnic_text"
-        app:layout_constraintStart_toEndOf="@+id/ethnic_text"
-        app:layout_constraintTop_toBottomOf="@+id/official_text" />
+        <TextView
+            android:id="@+id/official_lang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/official_text"
+            app:layout_constraintStart_toEndOf="@+id/official_text"
+            app:layout_constraintTop_toTopOf="@+id/official_text" />
 
-    <TextView
-        android:id="@+id/religion_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Religion:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ethnic_text" />
+        <TextView
+            android:id="@+id/ethnic_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Ethnic Group:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/official_text" />
 
-    <TextView
-        android:id="@+id/religion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/religion_text"
-        app:layout_constraintStart_toEndOf="@+id/religion_text"
-        app:layout_constraintTop_toBottomOf="@+id/ethnic_text" />
+        <TextView
+            android:id="@+id/ethnic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/ethnic_text"
+            app:layout_constraintStart_toEndOf="@+id/ethnic_text"
+            app:layout_constraintTop_toTopOf="@+id/ethnic_text" />
 
-    <TextView
-        android:id="@+id/government_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Government:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/religion_text" />
+        <TextView
+            android:id="@+id/religion_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Religion:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ethnic_text" />
 
-    <TextView
-        android:id="@+id/government"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/government_text"
-        app:layout_constraintStart_toEndOf="@+id/government_text"
-        app:layout_constraintTop_toBottomOf="@+id/religion_text" />
+        <TextView
+            android:id="@+id/religion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/religion_text"
+            app:layout_constraintStart_toEndOf="@+id/religion_text"
+            app:layout_constraintTop_toTopOf="@+id/religion_text" />
 
-    <TextView
-        android:id="@+id/independence_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Independence:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/government_text" />
+        <TextView
+            android:id="@+id/government_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Government:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/religion_text" />
 
-    <TextView
-        android:id="@+id/independence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/independence_text"
-        app:layout_constraintStart_toEndOf="@+id/independence_text"
-        app:layout_constraintTop_toBottomOf="@+id/government_text" />
+        <TextView
+            android:id="@+id/government"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/government_text"
+            app:layout_constraintStart_toEndOf="@+id/government_text"
+            app:layout_constraintTop_toTopOf="@+id/government_text" />
 
-    <TextView
-        android:id="@+id/area_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Area:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/independence_text" />
+        <TextView
+            android:id="@+id/independence_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Independence:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/government_text" />
 
-    <TextView
-        android:id="@+id/area"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/area_text"
-        app:layout_constraintStart_toEndOf="@+id/area_text"
-        app:layout_constraintTop_toBottomOf="@+id/independence_text" />
+        <TextView
+            android:id="@+id/independence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/independence_text"
+            app:layout_constraintStart_toEndOf="@+id/independence_text"
+            app:layout_constraintTop_toTopOf="@+id/independence_text" />
 
-    <TextView
-        android:id="@+id/currency_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Currency:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/area_text" />
+        <TextView
+            android:id="@+id/area_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Area:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/independence_text" />
 
-    <TextView
-        android:id="@+id/currency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/currency_text"
-        app:layout_constraintStart_toEndOf="@+id/currency_text"
-        app:layout_constraintTop_toBottomOf="@+id/area_text" />
+        <TextView
+            android:id="@+id/area"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/area_text"
+            app:layout_constraintStart_toEndOf="@+id/area_text"
+            app:layout_constraintTop_toTopOf="@+id/area_text" />
 
-    <TextView
-        android:id="@+id/gdp_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="GDP:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/currency_text" />
+        <TextView
+            android:id="@+id/currency_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Currency:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/area_text" />
 
-    <TextView
-        android:id="@+id/gdp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/gdp_text"
-        app:layout_constraintStart_toEndOf="@+id/gdp_text"
-        app:layout_constraintTop_toBottomOf="@+id/currency_text" />
+        <TextView
+            android:id="@+id/currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/currency_text"
+            app:layout_constraintStart_toEndOf="@+id/currency_text"
+            app:layout_constraintTop_toBottomOf="@+id/area_text" />
 
-    <TextView
-        android:id="@+id/timezone_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Time Zone:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gdp_text" />
+        <TextView
+            android:id="@+id/gdp_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="GDP:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/currency_text" />
 
-    <TextView
-        android:id="@+id/timezone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/timezone_text"
-        app:layout_constraintStart_toEndOf="@+id/timezone_text"
-        app:layout_constraintTop_toBottomOf="@+id/gdp_text" />
+        <TextView
+            android:id="@+id/gdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/gdp_text"
+            app:layout_constraintStart_toEndOf="@+id/gdp_text"
+            app:layout_constraintTop_toTopOf="@+id/gdp_text" />
 
-    <TextView
-        android:id="@+id/date_formate_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date format:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timezone_text" />
+        <TextView
+            android:id="@+id/timezone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Time Zone:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gdp_text" />
 
-    <TextView
-        android:id="@+id/date_format"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/date_formate_text"
-        app:layout_constraintStart_toEndOf="@+id/date_formate_text"
-        app:layout_constraintTop_toBottomOf="@+id/timezone_text" />
+        <TextView
+            android:id="@+id/timezone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/timezone_text"
+            app:layout_constraintStart_toEndOf="@+id/timezone_text"
+            app:layout_constraintTop_toTopOf="@+id/timezone_text" />
 
-    <TextView
-        android:id="@+id/dialing_code_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dialing Code:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_formate_text" />
+        <TextView
+            android:id="@+id/date_formate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Date format:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timezone_text" />
 
-    <TextView
-        android:id="@+id/dialing_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/dialing_code_text"
-        app:layout_constraintStart_toEndOf="@+id/dialing_code_text"
-        app:layout_constraintTop_toBottomOf="@+id/date_formate_text" />
+        <TextView
+            android:id="@+id/date_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/date_formate_text"
+            app:layout_constraintStart_toEndOf="@+id/date_formate_text"
+            app:layout_constraintTop_toBottomOf="@+id/timezone_text" />
 
-    <TextView
-        android:id="@+id/driving_side_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Driving Side:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dialing_code_text" />
+        <TextView
+            android:id="@+id/dialing_code_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Dialing Code:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_formate_text" />
 
-    <TextView
-        android:id="@+id/driving_side"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/driving_side_text"
-        app:layout_constraintStart_toEndOf="@+id/driving_side_text"
-        app:layout_constraintTop_toBottomOf="@+id/dialing_code_text" />
+        <TextView
+            android:id="@+id/dialing_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/dialing_code_text"
+            app:layout_constraintStart_toEndOf="@+id/dialing_code_text"
+            app:layout_constraintTop_toTopOf="@+id/dialing_code_text" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/driving_side_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Driving Side:"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialing_code_text" />
+
+        <TextView
+            android:id="@+id/driving_side"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintBottom_toBottomOf="@+id/driving_side_text"
+            app:layout_constraintStart_toEndOf="@+id/driving_side_text"
+            app:layout_constraintTop_toTopOf="@+id/driving_side_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

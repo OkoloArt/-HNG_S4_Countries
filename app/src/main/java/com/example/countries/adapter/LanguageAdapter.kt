@@ -2,7 +2,6 @@ package com.example.countries.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.RadioButton
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,10 +18,10 @@ class LanguageAdapter(private val onItemClicked: (LanguageModel) -> Unit) :
     class LanguageViewHolder(private val binding: LanguageListItemBinding) :
         RecyclerView.ViewHolder(binding.root)
     {
-        var radioButton: RadioButton = binding.languageChecked
-        fun bind(languageModel: LanguageModel)
+        fun bind(languageModel: LanguageModel , selected: Boolean)
         {
             binding.languageName.text = languageModel.languageName
+            binding.languageChecked.isChecked = selected
         }
     }
 
@@ -40,11 +39,13 @@ class LanguageAdapter(private val onItemClicked: (LanguageModel) -> Unit) :
     override fun onBindViewHolder(holder: LanguageViewHolder , position: Int)
     {
         val current = getItem(position)
+        holder.bind(current , position == lastCheckedPosition)
         holder.itemView.setOnClickListener {
-            holder.radioButton.isChecked = position == lastCheckedPosition
+            lastCheckedPosition = holder.adapterPosition
+            notifyDataSetChanged()
         }
-        holder.bind(current)
     }
+
     companion object
     {
         private val DiffCallback = object : DiffUtil.ItemCallback<LanguageModel>()

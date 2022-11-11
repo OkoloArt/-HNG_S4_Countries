@@ -2,16 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:paddingTop="13dp"
+    android:paddingBottom="13dp"
+    android:layout_height="wrap_content">
 
     <RadioButton
         android:id="@+id/language_checked"
-        android:layout_width="40dp"
+        android:layout_width="30dp"
         android:layout_alignParentEnd="true"
-        android:layout_height="45dp" />
+        android:layout_height="28dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/language_name"
+        android:textAppearance="?attr/textAppearanceSearchResultTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        android:layout_toStartOf="@id/language_checked"
