@@ -7,22 +7,27 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.countries.ui.CountryListFragment"
+        android:name="com.example.countries.ui.country_list.CountryListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_country_list">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.countries.ui.CountryDetailFragment"
+        android:name="com.example.countries.ui.countrydetail.CountryDetailFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_country_details">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
+        <argument
+            android:name="country"
+            app:argType="com.example.countries.data.remote.dto.country.CountriesDto" />
     </fragment>
 </navigation>
