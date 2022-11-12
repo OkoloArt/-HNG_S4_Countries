@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
@@ -18,6 +19,8 @@ import com.example.countries.adapter.CountriesAdapter
 import com.example.countries.data.remote.dto.country.CountriesDto
 import com.example.countries.databinding.FragmentCountryListBinding
 import com.example.countries.domain.model.CountriesModel
+import com.example.countries.ui.filter_list.FilterModalSheet
+import com.example.countries.ui.filter_list.FilterViewModel
 import com.example.countries.ui.language_list.LanguageModalSheet
 import com.example.countries.ui.viewmodel.CountryListViewModel
 import com.example.countries.utils.ConnectivityObserver
@@ -39,6 +42,7 @@ class CountryListFragment : Fragment() {
     private val countryListViewModel by viewModels<CountryListViewModel>()
     private lateinit var countriesAdapter: CountriesAdapter
     private var countriesList = mutableListOf<CountriesDto>()
+    private val filterViewModel : FilterViewModel by activityViewModels()
 
     private var mSectionList: ArrayList<CountriesModel>? = null
 
@@ -60,6 +64,7 @@ class CountryListFragment : Fragment() {
     {
         super.onViewCreated(view , savedInstanceState)
 
+        loadCountry()
         if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
             dayNightMode=!dayNightMode
             binding.apply {
@@ -76,11 +81,11 @@ class CountryListFragment : Fragment() {
             it?.let {
                 if (it.name =="Lost"){
                     binding.countriesRecyclerview.visibility = View.INVISIBLE
-           //         binding.loading.visibility = View.VISIBLE
+                    binding.noInternetConnection.visibility = View.VISIBLE
                     Toast.makeText(requireContext(),"No Internet Connection", Toast.LENGTH_SHORT).show()
                 }else{
-           //         Handler(Looper.getMainLooper()).postDelayed({loadCards() } , 4000)
                     binding.countriesRecyclerview.visibility = View.VISIBLE
+                    binding.noInternetConnection.visibility = View.INVISIBLE
                     loadCountry()
                     setUpSearchView()
                 }
@@ -95,6 +100,34 @@ class CountryListFragment : Fragment() {
             }
             nightButton.setOnClickListener {
                 setDayNightTheme(dayNightMode)
+            }
+            filter.setOnClickListener{
+                showFilterModal()
+            }
+        }
+    }
+
+    private fun showData(){
+        lifecycleScope.launch {
+            countryListViewModel.state.collect { it ->
+                it.country.let { countries ->
+                    val countriesModels: ArrayList<CountriesModel> = ArrayList()
+                    countriesList = countries.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name.official!! }).toMutableList()
+                    for (i in 0 until countriesList.size)
+                    {
+                        countriesModels.add(CountriesModel(countriesList[i].name.official!!,countriesList[i] , false))
+                    }
+
+                    mSectionList = ArrayList()
+                    getHeaderListLatter(countriesModels)
+                    countriesAdapter = CountriesAdapter(mSectionList!!){ model ->
+                        val action = CountryListFragmentDirections.actionFirstFragmentToSecondFragment(model.countriesDto)
+                        findNavController().navigate(action)
+                    }
+                    binding.countriesRecyclerview.layoutManager =
+                        LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL , false)
+                    binding.countriesRecyclerview.adapter = countriesAdapter
+                }
             }
         }
     }
@@ -130,26 +163,24 @@ class CountryListFragment : Fragment() {
         languageModalSheet.show(requireFragmentManager() , LanguageModalSheet.TAG)
     }
 
-    private fun loadCountry(){
-        lifecycleScope.launch {
-            countryListViewModel.state.collect { it ->
-                it.country.let { countries ->
-                    val countriesModels: ArrayList<CountriesModel> = ArrayList()
-                    countriesList = countries.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name.official!! }).toMutableList()
-                    for (i in 0 until countriesList.size)
-                    {
-                        countriesModels.add(CountriesModel(countriesList[i].name.official!!,countriesList[i] , false))
-                    }
+    private fun showFilterModal(){
+        val filterModalSheet = FilterModalSheet()
+        filterModalSheet.show(requireFragmentManager() , FilterModalSheet.TAG)
+    }
 
-                    mSectionList = ArrayList()
-                    getHeaderListLatter(countriesModels)
-                    countriesAdapter = CountriesAdapter(mSectionList!!){ model ->
-                        val action = CountryListFragmentDirections.actionFirstFragmentToSecondFragment(model.countriesDto)
-                        findNavController().navigate(action)
+    private fun loadCountry(){
+        filterViewModel.filter.observe(viewLifecycleOwner){ filters ->
+            filters?.let {
+                if (filters.isEmpty()){
+                    showData()
+                }else{
+                    for (i in 0 until countriesList.size){
+                        for (j in filters.indices){
+                            if (countriesList[i].continents?.first() == filters[j].childTitle){
+                                countriesAdapter.getFilter().filter(filters[j].childTitle)
+                            }
+                        }
                     }
-                    binding.countriesRecyclerview.layoutManager =
-                        LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL , false)
-                    binding.countriesRecyclerview.adapter = countriesAdapter
                 }
             }
         }

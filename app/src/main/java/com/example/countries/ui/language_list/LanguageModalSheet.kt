@@ -27,7 +27,7 @@ class LanguageModalSheet : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater , container: ViewGroup? ,
         savedInstanceState: Bundle? ,
-    ): View?
+    ): View
     {
         // Inflate the layout for this fragment
         _binding = FragmentLanguageListBinding.inflate(inflater,container,false)
@@ -38,6 +38,10 @@ class LanguageModalSheet : BottomSheetDialogFragment() {
     {
         super.onViewCreated(view , savedInstanceState)
         loadLanguages()
+
+        binding.dismiss.setOnClickListener{
+            dismiss()
+        }
     }
 
     private fun loadLanguages(){

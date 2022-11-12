@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.countries.common.Constants.CONTENT_VIEW
+import com.example.countries.common.Constants.SECTION_VIEW
 import com.example.countries.databinding.CountryListDetailsBinding
 import com.example.countries.databinding.HeaderTitleBinding
 import com.example.countries.domain.model.CountriesModel
@@ -106,11 +108,5 @@ class CountriesAdapter(private val dataSet: ArrayList<CountriesModel>, private v
                 notifyDataSetChanged()
             }
         }
-    }
-
-    companion object
-    {
-        const val SECTION_VIEW = 0
-        const val CONTENT_VIEW = 1
     }
 }

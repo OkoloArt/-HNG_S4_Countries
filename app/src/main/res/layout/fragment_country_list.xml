@@ -23,6 +23,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_mode_night"
+        android:padding="6dp"
+        android:background="@drawable/button_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,6 +32,8 @@
         android:id="@+id/day_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:background="@drawable/button_background"
         android:src="@drawable/ic_light_mode"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +49,9 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/language"
         android:text="En"
+        android:background="@drawable/button_background"
         android:layout_marginTop="10dp"
+        android:padding="5dp"
         android:drawableStart="@drawable/ic_language"
         android:contentDescription="select language"
         android:layout_width="wrap_content"
@@ -56,8 +62,10 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/filter"
         android:layout_width="wrap_content"
+        android:background="@drawable/button_background"
         android:contentDescription="filter"
         android:layout_height="wrap_content"
+        android:padding="6dp"
         android:text="Filter"
         android:drawableStart="@drawable/ic_filter"
         app:layout_constraintBottom_toBottomOf="@+id/language"
@@ -73,5 +81,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/language" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/no_internet_connection"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/black_no_internet_connection" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="12dp"
-    android:background="@drawable/image_background"
     android:layout_height="match_parent"
-    tools:context=".ui.language_list.LanguageModalSheet">
-
+    tools:context=".ui.filter_list.FilterModalSheet">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        android:text="Language"
+            android:text="Filter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,16 +21,38 @@
         android:id="@+id/dismiss"
         android:layout_width="wrap_content"
         android:src="@drawable/ic_cancel"
+        android:background="@drawable/oval_background"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appCompatTextView2" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/exRecycle"
         android:layout_marginTop="20dp"
-        android:id="@+id/language_recyclerview"
+        app:layout_constraintTop_toBottomOf="@id/appCompatTextView2"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView2" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:text="Reset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exRecycle" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:id="@+id/results"
+        android:layout_height="wrap_content"
+        android:text="Show Results"
+        android:background="@drawable/results_background"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/reset" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
