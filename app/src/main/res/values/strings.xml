@@ -11,4 +11,25 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="language">Language</string>
+    <string name="population">Population:</string>
+    <string name="region">Region:</string>
+    <string name="capital">Capital:</string>
+    <string name="motto">Motto:</string>
+    <string name="official_language">Official Language:</string>
+    <string name="ethnic_group">Ethnic Group:</string>
+    <string name="religion">Religion:</string>
+    <string name="government">Government:</string>
+    <string name="independence">Independence:</string>
+    <string name="area">Area:</string>
+    <string name="currency">Currency:</string>
+    <string name="gdp">GDP:</string>
+    <string name="time_zone">Time Zone:</string>
+    <string name="date_format">Date format:</string>
+    <string name="dialing_code">Dialing Code:</string>
+    <string name="driving_side">Driving Side:</string>
+    <string name="explore">Explore</string>
+    <string name="select_language">select language</string>
+    <string name="en">En</string>
+    <string name="filter">filter</string>
 </resources>

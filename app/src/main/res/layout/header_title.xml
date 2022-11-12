@@ -3,15 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/headerTitleTextview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
         android:text="S" />
 
 </LinearLayout>

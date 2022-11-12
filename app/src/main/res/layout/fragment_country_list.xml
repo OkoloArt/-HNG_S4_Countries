@@ -13,7 +13,7 @@
         android:textAppearance="?attr/textAppearanceHeadline5"
         android:textStyle="bold|italic"
         android:layout_height="wrap_content"
-        android:text="Explore"
+        android:text="@string/explore"
         app:layout_constraintBottom_toBottomOf="@+id/night_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/night_button" />
@@ -48,12 +48,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/language"
-        android:text="En"
+        android:text="@string/en"
         android:background="@drawable/button_background"
         android:layout_marginTop="10dp"
         android:padding="5dp"
         android:drawableStart="@drawable/ic_language"
-        android:contentDescription="select language"
+        android:contentDescription="@string/select_language"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
         android:id="@+id/filter"
         android:layout_width="wrap_content"
         android:background="@drawable/button_background"
-        android:contentDescription="filter"
+        android:contentDescription="@string/filter"
         android:layout_height="wrap_content"
         android:padding="6dp"
         android:text="Filter"

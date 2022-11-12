@@ -15,7 +15,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/country_flag_image"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:background="@drawable/image_background"
             android:scaleType="fitXY"
             android:clipToOutline="true"
@@ -28,8 +28,8 @@
             android:id="@+id/population_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Population:"
+            android:layout_marginTop="20dp"
+            android:text="@string/population"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/country_flag_image" />
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Region:"
+            android:text="@string/region"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/population_text" />
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Capital:"
+            android:text="@string/capital"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/region_text" />
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Motto:"
+            android:text="@string/motto"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/capital_text" />
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Official Language:"
+            android:text="@string/official_language"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/motto_text" />
@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Ethnic Group:"
+            android:text="@string/ethnic_group"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/official_text" />
@@ -155,7 +155,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Religion:"
+            android:text="@string/religion"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ethnic_text" />
@@ -176,7 +176,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Government:"
+            android:text="@string/government"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/religion_text" />
@@ -197,7 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Independence:"
+            android:text="@string/independence"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/government_text" />
@@ -218,7 +218,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Area:"
+            android:text="@string/area"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/independence_text" />
@@ -239,7 +239,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Currency:"
+            android:text="@string/currency"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/area_text" />
@@ -260,7 +260,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="GDP:"
+            android:text="@string/gdp"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/currency_text" />
@@ -281,7 +281,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Time Zone:"
+            android:text="@string/time_zone"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gdp_text" />
@@ -302,7 +302,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Date format:"
+            android:text="@string/date_format"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/timezone_text" />
@@ -323,7 +323,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Dialing Code:"
+            android:text="@string/dialing_code"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/date_formate_text" />
@@ -344,7 +344,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Driving Side:"
+            android:text="@string/driving_side"
             android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dialing_code_text" />

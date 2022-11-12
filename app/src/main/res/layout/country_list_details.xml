@@ -8,7 +8,6 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/country_image"
         android:layout_width="60dp"
-
         android:scaleType="fitXY"
         android:background="@drawable/image_background"
         android:clipToOutline="true"
@@ -18,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/country_image"
@@ -28,14 +27,12 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/country_name"
             android:layout_width="match_parent"
-            android:text="Albania"
             android:textAppearance="?attr/textAppearanceSearchResultTitle"
             android:layout_height="wrap_content" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/country_capital"
             android:textAppearance="?attr/textAppearanceBody2"
-            android:text="Tirania"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
