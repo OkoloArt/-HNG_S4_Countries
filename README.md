@@ -5,7 +5,9 @@
 
 > _What are the sprinkles?_ - The sprinkles involves styling the app, adding possible animations.
 
-> Live demo [_countries_](). 
+> Live demo [_countries_](https://appetize.io/app/ep4jy3zaa5fnehdsldg7haqdma?device=pixel4xl&osVersion=11.0&scale=50). 
+
+> Apk File [_apk_](https://drive.google.com/file/d/1FZN-_negwWp9YVIu5-So7g5SDPsXjeGt/view?usp=sharing)
 
 ## Table of Contents
 * [General Info](#general-information)
