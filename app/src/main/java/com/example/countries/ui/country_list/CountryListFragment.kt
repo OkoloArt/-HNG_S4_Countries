@@ -1,6 +1,7 @@
 package com.example.countries.ui.country_list
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,15 +14,18 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.countries.adapter.CountryAdapter
+import com.example.countries.adapter.CountriesAdapter
 import com.example.countries.data.remote.dto.country.CountriesDto
 import com.example.countries.databinding.FragmentCountryListBinding
+import com.example.countries.domain.model.CountriesModel
 import com.example.countries.ui.language_list.LanguageModalSheet
 import com.example.countries.ui.viewmodel.CountryListViewModel
 import com.example.countries.utils.ConnectivityObserver
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.*
 import javax.inject.Inject
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -33,8 +37,10 @@ class CountryListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val countryListViewModel by viewModels<CountryListViewModel>()
-    private lateinit var adapter: CountryAdapter
+    private lateinit var countriesAdapter: CountriesAdapter
     private var countriesList = mutableListOf<CountriesDto>()
+
+    private var mSectionList: ArrayList<CountriesModel>? = null
 
     @Inject lateinit var connectivityObserver: ConnectivityObserver
 
@@ -75,7 +81,7 @@ class CountryListFragment : Fragment() {
                 }else{
            //         Handler(Looper.getMainLooper()).postDelayed({loadCards() } , 4000)
                     binding.countriesRecyclerview.visibility = View.VISIBLE
-                    loadCountries()
+                    loadCountry()
                     setUpSearchView()
                 }
             }
@@ -107,38 +113,69 @@ class CountryListFragment : Fragment() {
     private fun setUpSearchView(){
         binding.searchList.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-               adapter.getFilter().filter(query)
+               countriesAdapter.getFilter().filter(query)
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.getFilter().filter(newText);
+                countriesAdapter.getFilter().filter(newText);
                 return true
             }
 
         })
     }
 
-    private fun loadCountries() {
+    private fun showLanguageModal(){
+        val languageModalSheet = LanguageModalSheet()
+        languageModalSheet.show(requireFragmentManager() , LanguageModalSheet.TAG)
+    }
+
+    private fun loadCountry(){
         lifecycleScope.launch {
             countryListViewModel.state.collect { it ->
                 it.country.let { countries ->
-                    countriesList = countries.sortedBy { it.name.toString() }.toMutableList()
-                    adapter = CountryAdapter(countriesList as ArrayList<CountriesDto>) { country ->
-                        val action = CountryListFragmentDirections.actionFirstFragmentToSecondFragment(country)
+                    val countriesModels: ArrayList<CountriesModel> = ArrayList()
+                    countriesList = countries.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.name.official!! }).toMutableList()
+                    for (i in 0 until countriesList.size)
+                    {
+                        countriesModels.add(CountriesModel(countriesList[i].name.official!!,countriesList[i] , false))
+                    }
+
+                    mSectionList = ArrayList()
+                    getHeaderListLatter(countriesModels)
+                    countriesAdapter = CountriesAdapter(mSectionList!!){ model ->
+                        val action = CountryListFragmentDirections.actionFirstFragmentToSecondFragment(model.countriesDto)
                         findNavController().navigate(action)
                     }
                     binding.countriesRecyclerview.layoutManager =
                         LinearLayoutManager(requireContext() , LinearLayoutManager.VERTICAL , false)
-                    binding.countriesRecyclerview.adapter = adapter
+                    binding.countriesRecyclerview.adapter = countriesAdapter
                 }
             }
         }
     }
 
-    private fun showLanguageModal(){
-        val languageModalSheet = LanguageModalSheet()
-        languageModalSheet.show(requireFragmentManager() , LanguageModalSheet.TAG)
+    private fun getHeaderListLatter(countryList: ArrayList<CountriesModel>)
+    {
+        countryList.sortWith(Comparator { country1 , country2 ->
+            country1?.countriesDto?.name?.official?.uppercase(Locale.getDefault())
+                ?.compareTo(country2?.countriesDto?.name?.official.toString().uppercase(
+                        Locale.getDefault())) ?: 0
+        })
+
+        var lastHeader: String? = ""
+        val size: Int = countryList.size
+        for (i in 0 until size)
+        {
+            val user = countryList[i]
+            val header = user.countriesDto.name.official?.toCharArray()?.first()?.uppercase(Locale.getDefault())
+            if (!TextUtils.equals(lastHeader , header))
+            {
+                lastHeader = header
+                mSectionList!!.add(CountriesModel(header!!, user.countriesDto , true))
+            }
+            mSectionList!!.add(user)
+        }
     }
 
     override fun onDestroyView()

@@ -21,5 +21,5 @@ data class CountriesDto(
     val subregion: String? ,
     @SerializedName("languages")
     val languages: HashMap<String, String>? = HashMap(),
-    val timezones: List<String>?
+    val timezones: List<String>?,
 ) : Serializable
