@@ -50,7 +50,7 @@ class FilterModalSheet : BottomSheetDialogFragment()
 
     private fun showFilterOption()
     {
-        val parentData: Array<String> = arrayOf("Continents" , "Time Zone")
+        val parentData: Array<String> = arrayOf("Continents" , "Time Zones")
         val childDataData1: MutableList<FilterChildData> =
             mutableListOf(FilterChildData("Africa"),
                           FilterChildData("Antarctica"),
