@@ -180,13 +180,7 @@ class CountryListFragment : Fragment() {
                 if (filters.isEmpty()){
                     showData()
                 }else{
-                    for (i in 0 until countriesList.size){
-                        for (j in filters.indices){
-                            if (countriesList[i].continents?.first() == filters[j].childTitle){
-                                countriesAdapter.getFilter().filter(filters[j].childTitle)
-                            }
-                        }
-                    }
+                    countriesAdapter.getFilter().filter(filters.first().childTitle)
                 }
             }
         }

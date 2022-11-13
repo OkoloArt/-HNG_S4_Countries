@@ -89,7 +89,8 @@ class CountriesAdapter(private val dataSet: ArrayList<CountriesModel>, private v
             } else {
                 val query = constraint.toString().trim().lowercase()
                 initialCountryList.forEach {
-                    if (it.countriesDto.name.official?.lowercase(Locale.ROOT)?.contains(query) == true) {
+                    if (it.countriesDto.name.official?.lowercase(Locale.ROOT)?.contains(query) == true || it.countriesDto.continents?.first()
+                        ?.lowercase(Locale.ROOT)?.contains(query) == true) {
                         filteredList.add(it)
                     }
                 }
